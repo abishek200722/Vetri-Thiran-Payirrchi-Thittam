@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduGenie — AI Learning Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="badge">✨ Gemini-powered learning</div>
+      <h1>EduGenie</h1>
+      <p>Ask, understand, practice, summarize, and build a learning path.</p>
+    </header>
+
+    <section class="card">
+      <div class="controls">
+        <label>
+          Task
+          <select id="task">
+            <option value="qa">Q&amp;A</option>
+            <option value="explain">Explain a concept</option>
+            <option value="quiz">Generate quiz</option>
+            <option value="summarize">Summarize</option>
+            <option value="learn">Recommend learning path</option>
+          </select>
+        </label>
+
+        <label>
+          Level
+          <select id="level">
+            <option value="school">School</option>
+            <option value="beginner" selected>Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </label>
+
+        <label id="hours-wrap" class="hidden">
+          Hours/week
+          <input id="hours" type="number" min="1" max="40" value="5">
+        </label>
+      </div>
+
+      <label for="input-text" id="input-label">Your question</label>
+      <textarea id="input-text" rows="9"
+        placeholder="Example: What is photosynthesis?"></textarea>
+
+      <button id="submit-btn" type="button">Ask EduGenie</button>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="result-card" class="card result-card hidden">
+      <div class="result-heading">
+        <h2>Result</h2>
+        <button id="copy-btn" class="secondary">Copy</button>
+      </div>
+      <pre id="result"></pre>
+      <div id="quiz-result"></div>
+    </section>
+
+    <footer>
+      EduGenie • FastAPI + Google GenAI SDK
+    </footer>
+  </main>
+  <script src="{{ url_for('static', path='app.js') }}"></script>
+</body>
+</html>
